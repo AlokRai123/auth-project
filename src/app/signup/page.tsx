@@ -5,7 +5,8 @@ import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-export default function page() {
+
+export default function page() {
     const router = useRouter();
   
     const [user,setUser] = useState({
@@ -13,6 +14,8 @@ export default function page() {
         email : "",
         password : ""
     })
+
+    
     const [buttonDisabled,setButtonDisabled] = useState(false);
 
     const [loading , setLoading] = useState(false)
