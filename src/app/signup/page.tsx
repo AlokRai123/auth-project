@@ -5,17 +5,14 @@ import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-
-export default function page() {
+function page() {
     const router = useRouter();
-  
+
     const [user,setUser] = useState({
         username : "",
         email : "",
         password : ""
     })
-
-    
     const [buttonDisabled,setButtonDisabled] = useState(false);
 
     const [loading , setLoading] = useState(false)
@@ -34,39 +31,40 @@ export default function page() {
            toast.error(error.message);
         }
     }
+
     useEffect(() =>{
 
-      if(user.email.length > 0 && user.password.length> 0 && user.username.length > 0){
-          setButtonDisabled(false);
-      }else{
-          setButtonDisabled(true);
-      }
+        if(user.email.length > 0 && user.password.length> 0 && user.username.length > 0){
+            setButtonDisabled(false);
+        }else{
+            setButtonDisabled(true);
+        }
 
-  },[user])
+    },[user])
 
-return (
-  <div className='flex flex-col items-center justify-center min-h-screen py-2'>
-      <h1>{loading ? "Processing" : "Signup"}</h1> <hr />
+  return (
+    <div className='flex flex-col items-center justify-center min-h-screen py-2'>
+        <h1>{loading ? "Processing" : "Signup"}</h1> <hr />
 
-      <label htmlFor="username">username:</label>
-      <input
-      id='username'
-      value={user.username}
-      onChange={(e) => setUser({...user, username : e.target.value})}
-      placeholder='enter username'
-      className='border border-black p-1 bg-gray-200 rounded-xl '
-      type="text"
-      />
-       <label htmlFor="email">Email:</label>
-      <input
-      id='email'
-      value={user.email}
-      onChange={(e) => setUser({...user, email : e.target.value})}
-      placeholder='enter email'
-      className='border border-black p-1 bg-gray-200 rounded-xl '
-      type="text"
-      />
-       <label htmlFor="password">Password:</label>
+        <label htmlFor="username">username:</label>
+        <input
+        id='username'
+        value={user.username}
+        onChange={(e) => setUser({...user, username : e.target.value})}
+        placeholder='enter username'
+        className='border border-black p-1 bg-gray-200 rounded-xl '
+        type="text"
+        />
+         <label htmlFor="email">Email:</label>
+        <input
+        id='email'
+        value={user.email}
+        onChange={(e) => setUser({...user, email : e.target.value})}
+        placeholder='enter email'
+        className='border border-black p-1 bg-gray-200 rounded-xl '
+        type="text"
+        />
+         <label htmlFor="password">Password:</label>
         <input
         id='password'
         value={user.password}
@@ -89,3 +87,4 @@ return (
   )
 }
 
+export default page
